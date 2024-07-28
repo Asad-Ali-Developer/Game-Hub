@@ -3,20 +3,18 @@ import Navbar from "./Components/Navbar"
 
 const App = () => {
   return (
-    <div>
+    <>
       <Grid templateAreas={{
-        base : `"nav" "main"`,
-        lg : `"nav nav" "aside main"`
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`
       }}>
-      <GridItem area='nav'>
-        <Navbar />
-      </GridItem>
-      <Show above="lg">
-          <GridItem area='aside' bg='blue'>Aside</GridItem>
-      </Show>
-      <GridItem area='main' bg='dodgerblue'>Main</GridItem>
+        <GridItem area='nav' bg='pink'><Navbar /></GridItem>
+        <Show above="lg">
+          <GridItem area='aside' bg='coral'>Aside</GridItem>
+        </Show>
+        <GridItem area='main' bg='cyan'>Main</GridItem>
       </Grid>
-    </div>
+    </>
   )
 }
 
