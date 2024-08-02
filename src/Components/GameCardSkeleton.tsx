@@ -5,8 +5,8 @@ const GameCardSkeleton = () => {
     return (
         <>
 
-            <Card width='300px'>
-                <Skeleton  height={200} />
+            <Card height='100%'>
+                <Skeleton  height={240} />
                 <CardBody>
                     <SkeletonText />
                 </CardBody>
