@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
 import useGenre, { Genre } from "../hooks/useGenre";
 import getCroppedImageUrl from "../assets/Services/image-url";
 import GenreListContainer from "./GenreListContainer";
@@ -8,9 +8,10 @@ import '../App.css'
 
 interface Props {
     onSelectGenre: (genre: Genre) => void
+    selectedGenre?: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     const { data: genre, isLoading } = useGenre();
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const { toggleColorMode, colorMode } = useColorMode();
@@ -59,7 +60,11 @@ const GenreList = ({ onSelectGenre }: Props) => {
                                 />
 
                                 <Text
-                                    backgroundColor={'transparent'}>
+                                    backgroundColor={'transparent'}
+                                    fontWeight={genre.id === selectedGenre?.id
+                                        ? 'bold'
+                                        : ''}
+                                >
                                     {genre.name}
                                 </Text>
 
