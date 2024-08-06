@@ -33,9 +33,9 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 </GenreListContainer>
             )}
 
-            <List>
+            <List marginTop={8}>
                 {genre.map((genre, index) => (
-                    <ListItem key={genre.id} paddingY={3} onClick={() => onSelectGenre(genre)}>
+                    <ListItem key={genre.id} paddingY={2} onClick={() => onSelectGenre(genre)}>
                         <GenreListContainer>
                             <HStack
                                 backgroundColor={
@@ -64,6 +64,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                                     fontWeight={genre.id === selectedGenre?.id
                                         ? 'bold'
                                         : ''}
+                                        
                                 >
                                     {genre.name}
                                 </Text>

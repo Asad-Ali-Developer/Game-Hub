@@ -16,9 +16,15 @@ export interface Games {
 }
 
 
-const useGames = (selectedGenre : Genre | null) => 
-    useData<Games>('/games', 
-    { params :  { genres : selectedGenre?.id}}
-     , [selectedGenre?.id])
+const useGames = (selectedGenre: Genre | null, selectedPlatform : Platform | null) =>
+    useData<Games>('/games', {
+        // Params for the API request
+        params: {
+            genres: selectedGenre?.id,
+            platforms : selectedPlatform?.id
+        }
+    },
+        // Array of dependencies
+        [selectedGenre?.id, selectedPlatform?.id])
 
 export default useGames;
