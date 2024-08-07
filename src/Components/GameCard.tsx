@@ -29,7 +29,7 @@ const GameCard = ({ game }: Props) => {
 
             </CardBody>
         </Card>
-
+    
     );
 };
 
