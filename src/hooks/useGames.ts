@@ -1,6 +1,6 @@
 import { GameQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
+
 
 export interface Platform {
     id: number;
@@ -22,10 +22,11 @@ const useGames = (gameQuery : GameQuery) =>
         // Params for the API request
         params: {
             genres: gameQuery.genre?.id,
-            platforms : gameQuery.platform?.id
+            platforms : gameQuery.platform?.id,
+            ordering : gameQuery.sortOrder
         }
     },
-        // Array of dependencies
-        [gameQuery.genre?.id, gameQuery.platform?.id])
+        // Array of dependencies 
+        [gameQuery])
 
 export default useGames;

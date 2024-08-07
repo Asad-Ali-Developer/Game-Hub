@@ -16,7 +16,7 @@ const GameCard = ({ game }: Props) => {
 
         <Card borderRadius={10} overflow="hidden">
             {game.background_image && (
-                <Image src={getCroppedImageUrl(game.background_image)} />
+                <Image src={getCroppedImageUrl(game.background_image)}/>
             )}
             <CardBody>
                 <Heading fontSize={{ sm: "md", md: "md", lg: "xl", xl: "xl" }}>
