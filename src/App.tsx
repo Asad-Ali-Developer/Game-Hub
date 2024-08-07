@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react"
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react"
 import Navbar from "./Components/Navbar"
 import GameGrid from "./Components/GameGrid"
 import GenreList from "./Components/GenreList"
@@ -7,6 +7,7 @@ import { Genre } from "./hooks/useGenre"
 import PlatformSelector from "./Components/PlatformSelector"
 import { Platform } from "./hooks/useGames"
 import SortSelector from "./Components/SortSelector"
+import GameHeading from "./Components/GameHeading"
 
 
 
@@ -32,7 +33,7 @@ const App = () => {
         }}>
 
         <GridItem area='nav'>
-          <Navbar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}/>
+          <Navbar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
         </GridItem>
 
         <Show above="lg">
@@ -46,20 +47,26 @@ const App = () => {
         </Show>
 
 
-        <GridItem area='main' marginTop={5}>
+        <GridItem area='main'>
+          <Box marginY={5} paddingLeft={6}>
 
-          <HStack paddingLeft={6} marginBottom={2} gap={5}>   
-            <PlatformSelector
-              onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
-              selectedPlatform={gameQuery.platform} />
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
-          </HStack>
+
+            <GameHeading gameQuery={gameQuery} /> 
+
+            <HStack gap={5} marginTop={8}>
+              <PlatformSelector
+                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+                selectedPlatform={gameQuery.platform} />
+              <SortSelector
+                sortOrder={gameQuery.sortOrder}
+                onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+            </HStack>
+
+          </Box>
 
           <GameGrid
             gameQuery={gameQuery} />
- 
+
         </GridItem>
       </Grid>
     </>

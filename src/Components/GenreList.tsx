@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { Heading, HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
 import useGenre, { Genre } from "../hooks/useGenre";
 import getCroppedImageUrl from "../assets/Services/image-url";
 import GenreListContainer from "./GenreListContainer";
@@ -16,7 +16,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const { toggleColorMode, colorMode } = useColorMode();
 
-    const list = Array.from({ length: 15 }, (_, i) => i + 1);
+    const list = Array.from({ length: 20 }, (_, i) => i + 1);
 
     return (
         <div>
@@ -26,6 +26,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 isChecked={colorMode === 'dark'}
                 onChange={toggleColorMode}
             />
+
+            <Heading fontSize='2xl' marginBottom={5}>Genres</Heading>
 
             {isLoading && list.map((item) =>
                 <GenreListContainer key={item}>
@@ -55,6 +57,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                                 <Image
                                     width="36px"
                                     height="36px"
+                                    objectFit='cover'
                                     borderRadius={8}
                                     src={getCroppedImageUrl(genre.image_background)}
                                 />

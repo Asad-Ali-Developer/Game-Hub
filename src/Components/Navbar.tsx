@@ -1,5 +1,4 @@
-import { HStack, Image } from "@chakra-ui/react"
-import logo from '../assets/images/logo.webp'
+import { Box, HStack } from "@chakra-ui/react"
 import ColorModeSwitch from "./ColorModeSwitch"
 import SearcHBar from "./SearcHBar"
 
@@ -12,8 +11,10 @@ const Navbar = ({ onSearch } : Props) => {
     <>
     
         <HStack justifyContent='space-between' gap={3} padding='10px' fontFamily='sans-serif'>
-          <Image src={logo} boxSize='60px' borderRadius='15px' border='1px' 
-          borderColor='gray.700'/>
+          
+          <Box width={10} height={10} display={'flex'} justifyContent={'center'} alignItems={'center'} fontSize={'xl'} fontWeight={'bold'} border={'1px'} borderRadius={10}
+          borderColor={'gray.700'} >T</Box>
+
           <SearcHBar onSearch={onSearch} />
           <ColorModeSwitch />
         </HStack>

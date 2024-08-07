@@ -5,9 +5,9 @@ const GenreListSkeleton = () => {
         <div>
             <List height='100%'>
                 <ListItem>
-                    <HStack width='100%'>
+                    <HStack width='100%' marginBottom={6}>
                         <Skeleton width='44px' borderRadius={8} height='44px' />
-                        <SkeletonText width='100px' />
+                        <SkeletonText width='100px'/>
                     </HStack>
                 </ListItem>
             </List>
