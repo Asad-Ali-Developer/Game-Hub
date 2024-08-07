@@ -33,7 +33,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 </GenreListContainer>
             )}
 
-            <List marginTop={8}>
+            <List>
                 {genre.map((genre, index) => (
                     <ListItem key={genre.id} paddingY={2} onClick={() => onSelectGenre(genre)}>
                         <GenreListContainer>
