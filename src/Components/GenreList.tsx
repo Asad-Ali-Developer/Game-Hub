@@ -5,6 +5,7 @@ import getCroppedImageUrl from "../assets/Services/image-url";
 import GenreListContainer from "./GenreListContainer";
 import GenreListSkeleton from "./GenreListSkeleton";
 import '../App.css'
+import { darkTheme, lightTheme } from "../theme";
 
 interface Props {
     onSelectGenre: (genre: Genre) => void
@@ -42,8 +43,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                             <HStack
                                 backgroundColor={
                                     colorMode === 'light'
-                                        ? (selectedIndex === index ? '#f3f4f6' : '')
-                                        : (selectedIndex === index ? '#1f2937' : '')
+                                        ? (selectedIndex === index ? lightTheme : '')
+                                        : (selectedIndex === index ? darkTheme : '')
                                 }
                                 onClick={() => {
                                     setSelectedIndex(index);
