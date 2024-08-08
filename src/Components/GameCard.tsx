@@ -3,8 +3,7 @@ import { Games } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../assets/Services/image-url";
 import CriticScore from "./CriticScore";
-
-
+import Emojie from "./Emojie";
 
 
 interface Props {
@@ -27,6 +26,8 @@ const GameCard = ({ game }: Props) => {
                 <Heading fontSize={{ sm: "md", md: "md", lg: "xl", xl: "xl" }}>
                     {game.name}
                 </Heading>
+
+                <Emojie rating={game.rating_top} />
 
             </CardBody>
         </Card>

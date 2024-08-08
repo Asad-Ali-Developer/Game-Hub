@@ -16,9 +16,9 @@ const SearcHBar = ( { onSearch } : Props ) => {
             
         }}>
             <div>
-                <InputGroup>
+                <InputGroup backgroundColor='gray.700' borderRadius={10}>
                     <InputLeftElement children={<BsSearch />}/>
-                    <Input ref={ref} borderRadius={10} placeholder="Search game ..." variant='filled' />
+                    <Input ref={ref} placeholder="Search game ..." variant='filled' />
                 </InputGroup>
             </div>
         </form>
