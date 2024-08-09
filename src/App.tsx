@@ -8,7 +8,7 @@ import PlatformSelector from "./Components/PlatformSelector"
 import { Platform } from "./hooks/useGames"
 import SortSelector from "./Components/SortSelector"
 import GameHeading from "./Components/GameHeading"
-import { darkTheme, genreLightTheme } from "./theme"
+import { darkTheme, genreDarkTheme, genreLightTheme } from "./theme"
 import { GiEnrage } from "react-icons/gi"
 import { CgClose } from "react-icons/cg"
 
@@ -59,16 +59,17 @@ const App = () => {
             onChange={toggleColorMode}
           />
 
-          <Show  below="lg">
-            <Text width={10} fontSize={'20px'} paddingLeft={2} 
-            onClick={() => {
-              setShowGenreList(!showGenreList)}}>
-              {showGenreList ? <CgClose /> : <GiEnrage /> }
+          <Show below="lg">
+            <Text width={10} fontSize={'20px'} paddingLeft={2}
+              onClick={() => {
+                setShowGenreList(!showGenreList)
+              }}>
+              {showGenreList ? <CgClose /> : <GiEnrage />}
             </Text>
 
-            <VStack 
+            <VStack
               align='left'
-              py={1}  
+              py={1}
               paddingLeft={1}
               borderRight={1}
               borderRightColor={darkTheme}
@@ -82,7 +83,7 @@ const App = () => {
               backgroundColor={
                 colorMode === 'light'
                   ? genreLightTheme
-                  : darkTheme
+                  : genreDarkTheme
               }>
 
 

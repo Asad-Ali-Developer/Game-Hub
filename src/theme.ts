@@ -3,6 +3,7 @@ import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 export const lightTheme = '#ededed'
 export const darkTheme = '#202020' 
 export const genreLightTheme = '#f9f9f9'
+export const genreDarkTheme = '#121212'
 
 const config : ThemeConfig = {
     initialColorMode : 'dark'
