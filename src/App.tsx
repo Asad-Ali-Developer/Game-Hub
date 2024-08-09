@@ -69,11 +69,11 @@ const App = () => {
 
             <VStack
               align='left'
+              position='absolute'
               py={1}
               paddingLeft={1}
               borderRight={1}
               borderRightColor={darkTheme}
-              position='absolute'
               zIndex={1}
               marginTop={1}
               height={'80%'}
