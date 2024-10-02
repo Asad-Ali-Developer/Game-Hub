@@ -1,20 +1,27 @@
-import { Box, Grid, GridItem, HStack, Show, Text, VStack, useColorMode, Switch } from "@chakra-ui/react"
-import Navbar from "./Components/Navbar"
-import GameGrid from "./Components/GameGrid"
-import GenreList from "./Components/GenreList"
+import { Box, Grid, GridItem, HStack, Show, Switch, Text, VStack, useColorMode } from "@chakra-ui/react"
 import { useState } from "react"
-import { Genre } from "./hooks/useGenre"
-import PlatformSelector from "./Components/PlatformSelector"
-import { Platform } from "./hooks/usePlatform"
-import SortSelector from "./Components/SortSelector"
-import GameHeading from "./Components/GameHeading"
-import { darkTheme, genreDarkTheme, genreLightTheme } from "./theme"
-import { GiEnrage } from "react-icons/gi"
 import { CgClose } from "react-icons/cg"
+import { GiEnrage } from "react-icons/gi"
+import GameGrid from "./Components/GameGrid"
+import GameHeading from "./Components/GameHeading"
+import GenreList from "./Components/GenreList"
+import Navbar from "./Components/Navbar"
+import PlatformSelector from "./Components/PlatformSelector"
+import SortSelector from "./Components/SortSelector"
+import { Platform } from "./hooks/usePlatform"
+import { darkTheme, genreDarkTheme, genreLightTheme } from "./theme"
+
+
+/*
+Note:
+     1. Undefined: The Absense of a value
+     2. Null: The intentional absence of a value
+*/
+
 
 // Refactoring: Extract the Query Object
 export interface GameQuery {
-  genre: Genre | null;
+  genreId?: number,
   platform: Platform | null;
   sortOrder: string; // 'asc' or 'desc'
   searchText: string; // Search query for game name 
@@ -46,10 +53,10 @@ const App = () => {
 
           <GridItem area='aside' paddingX={5}>
             <GenreList
-              selectedGenre={gameQuery.genre}
-              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
+              selectedGenreId={gameQuery.genreId}
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId : genre.id })} />
           </GridItem>
-        </Show>
+        </Show> 
 
         <GridItem area='main'>
 
@@ -89,8 +96,8 @@ const App = () => {
 
               {showGenreList && (
                 <GenreList
-                  selectedGenre={gameQuery.genre}
-                  onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
+                  selectedGenreId={gameQuery.genreId}
+                  onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })} />
               )}
             </VStack>
           </Show>

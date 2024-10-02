@@ -9,10 +9,10 @@ import { darkTheme, lightTheme } from "../theme";
 
 interface Props {
     onSelectGenre: (genre: Genre) => void
-    selectedGenre?: Genre | null;
+    selectedGenreId?: number;
 }
 
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
     const { data: genre, isLoading } = useGenre();
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const { toggleColorMode, colorMode } = useColorMode();
@@ -65,7 +65,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
                                 <Text
                                     backgroundColor={'transparent'}
-                                    fontWeight={genre.id === selectedGenre?.id
+                                    fontWeight={genre.id === selectedGenreId
                                         ? 'bold'
                                         : ''}
                                         
