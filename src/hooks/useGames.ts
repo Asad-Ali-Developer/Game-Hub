@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import { FetchResponse } from "../assets/Services/api-client";
-import apiClient from "../assets/Services/api-client";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { Platform } from "./usePlatform";
+import APIClient, { FetchResponse } from "../Services/api-client";
 
+const apiClient = new APIClient<Games>('/games');
 
 export interface Games {
     id: number;
@@ -15,35 +15,24 @@ export interface Games {
 }
 
 
-const useGames = (gameQuery: GameQuery) => useQuery<FetchResponse<Games>, Error>({
+
+const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Games>, Error>({
     queryKey: ['games', gameQuery],
-    queryFn: () => apiClient
-        .get<FetchResponse<Games>>('/games', {
-            params: {
-                genres: gameQuery.genre?.id,
-                parent_platforms: gameQuery.platform?.id,
-                ordering: gameQuery.sortOrder,
-                search: gameQuery.searchText
-            }
-        })
-        .then(res => res.data),
-    staleTime: 1000 * 60 * 60 * 24, // 24 hrs
-    // initialData : {count : games.length, results : games}
+    queryFn: ({ pageParam = 1 }) =>
+        apiClient
+            .getAll({
+                params: {
+                    genres: gameQuery.genre?.id,
+                    parent_platforms: gameQuery.platform?.id,
+                    ordering: gameQuery.sortOrder,
+                    search: gameQuery.searchText,
+                    page: pageParam,
+                },
+            }),
+    getNextPageParam: (lastPage, allPages) => {
+        return lastPage.next ? allPages.length + 1 : undefined;
+    }
 })
 
-
-
-
-// useData<Games>('/games', {
-//     // Params for the API request
-//     params: {
-//         genres: gameQuery.genre?.id,
-//         platforms : gameQuery.platform?.id,
-//         ordering : gameQuery.sortOrder,
-//         search : gameQuery.searchText
-//     }
-// },
-//     // Array of dependencies 
-//     [gameQuery])
 
 export default useGames;
