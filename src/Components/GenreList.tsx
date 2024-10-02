@@ -37,7 +37,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             )}
 
             <List>
-                {genre.map((genre, index) => (
+                {genre?.results.map((genre, index) => (
                     <ListItem key={genre.id} paddingY={2} onClick={() => onSelectGenre(genre)}>
                         <GenreListContainer>
                             <HStack

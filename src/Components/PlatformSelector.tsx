@@ -21,7 +21,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
                 </MenuButton>
 
                 <MenuList fontSize={{ sm: "md" }}>
-                    {data.map(platform => (
+                    {data?.results.map(platform => (
                         <MenuItem
                             onClick={() => onSelectPlatform(platform)}
                             key={platform.id}>
