@@ -8,7 +8,6 @@ import GenreList from "./Components/GenreList"
 import Navbar from "./Components/Navbar"
 import PlatformSelector from "./Components/PlatformSelector"
 import SortSelector from "./Components/SortSelector"
-import { Platform } from "./hooks/usePlatform"
 import { darkTheme, genreDarkTheme, genreLightTheme } from "./theme"
 
 
@@ -22,7 +21,7 @@ Note:
 // Refactoring: Extract the Query Object
 export interface GameQuery {
   genreId?: number,
-  platform: Platform | null;
+  platformId?: number;
   sortOrder: string; // 'asc' or 'desc'
   searchText: string; // Search query for game name 
 }
@@ -107,8 +106,8 @@ const App = () => {
 
             <HStack gap={5} marginTop={8}>
               <PlatformSelector
-                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
-                selectedPlatform={gameQuery.platform} />
+                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platformId: platform.id })}
+                selectedPlatformId={gameQuery.platformId} />
               <SortSelector
                 sortOrder={gameQuery.sortOrder}
                 onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
