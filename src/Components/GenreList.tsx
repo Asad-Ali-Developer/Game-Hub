@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Heading, HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
-import useGenre, { Genre } from "../hooks/useGenre";
+import useGenre, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../Services/image-url";
 import GenreListContainer from "./GenreListContainer";
 import GenreListSkeleton from "./GenreListSkeleton";
