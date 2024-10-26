@@ -8,54 +8,42 @@ import GenreList from "./Components/GenreList"
 import Navbar from "./Components/Navbar"
 import PlatformSelector from "./Components/PlatformSelector"
 import SortSelector from "./Components/SortSelector"
+import useGameQueryStore from "./store"
 import { darkTheme, genreDarkTheme, genreLightTheme } from "./theme"
 
 
-/*
-Note:
-     1. Undefined: The Absense of a value
-     2. Null: The intentional absence of a value
-*/
-
-
-// Refactoring: Extract the Query Object
-export interface GameQuery {
-  genreId?: number,
-  platformId?: number;
-  sortOrder: string; // 'asc' or 'desc'
-  searchText: string; // Search query for game name 
-}
-
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+
+  const { } = useGameQueryStore()
+
   const [showGenreList, setShowGenreList] = useState(false) // State for showing GenreList
   const { toggleColorMode, colorMode } = useColorMode();
 
   return (
     <>
-      <Grid fontFamily='sans-serif' templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`
-      }}
+      <Grid
+        fontFamily='sans-serif'
+        templateAreas={{
+          base: `"nav" "main"`,
+          lg: `"nav nav" "aside main"`
+        }}
         templateColumns={{
           base: '1fr',
           lg: '200px 1fr'
         }}>
 
         <GridItem area='nav'>
-          <Navbar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
+          <Navbar />
         </GridItem>
 
 
-
         <Show above="lg">
-
-          <GridItem area='aside' paddingX={5}>
-            <GenreList
-              selectedGenreId={gameQuery.genreId}
-              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId : genre.id })} />
+          <GridItem
+            area='aside'
+            paddingX={5}>
+            <GenreList />
           </GridItem>
-        </Show> 
+        </Show>
 
         <GridItem area='main'>
 
@@ -66,26 +54,31 @@ const App = () => {
           />
 
           <Show below="lg">
-            <Text width={10} fontSize={'20px'} paddingLeft={2}
+            <Text
+              width={10}
+              fontSize={'20px'}
+              paddingLeft={2}
               onClick={() => {
                 setShowGenreList(!showGenreList)
               }}>
-              {showGenreList ? <CgClose /> : <GiEnrage />}
+              {showGenreList
+                ? <CgClose />
+                : <GiEnrage />}
             </Text>
 
             <VStack
-              align='left'
-              position='absolute'
               py={1}
-              paddingLeft={1}
-              borderRight={1}
-              borderRightColor={darkTheme}
               zIndex={1}
+              align='left'
               marginTop={1}
               height={'80%'}
-              overflowY={'scroll'}
-              backdropBlur='10px'
+              borderRight={1}
+              paddingLeft={1}
               borderRadius={10}
+              backdropBlur='10px'
+              position='absolute'
+              overflowY={'scroll'}
+              borderRightColor={darkTheme}
               backgroundColor={
                 colorMode === 'light'
                   ? genreLightTheme
@@ -94,28 +87,26 @@ const App = () => {
 
 
               {showGenreList && (
-                <GenreList
-                  selectedGenreId={gameQuery.genreId}
-                  onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })} />
+                <GenreList />
               )}
+
             </VStack>
           </Show>
 
-          <Box marginY={5} paddingLeft={6}>
-            <GameHeading gameQuery={gameQuery} />
+          <Box
+            marginY={5}
+            paddingLeft={6}>
+            <GameHeading />
 
-            <HStack gap={5} marginTop={8}>
-              <PlatformSelector
-                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platformId: platform.id })}
-                selectedPlatformId={gameQuery.platformId} />
-              <SortSelector
-                sortOrder={gameQuery.sortOrder}
-                onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+            <HStack
+              gap={5}
+              marginTop={8}>
+              <PlatformSelector />
+              <SortSelector />
             </HStack>
           </Box>
 
-          <GameGrid
-            gameQuery={gameQuery} />
+          <GameGrid />
         </GridItem>
       </Grid >
     </>

@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { Heading, HStack, Image, List, ListItem, Switch, Text, useColorMode } from "@chakra-ui/react";
-import useGenre, { Genre } from "../hooks/useGenres";
+import useGenre from "../hooks/useGenres";
 import getCroppedImageUrl from "../Services/image-url";
 import GenreListContainer from "./GenreListContainer";
 import GenreListSkeleton from "./GenreListSkeleton";
 import '../App.css'
 import { darkTheme, lightTheme } from "../theme";
+import useGameQueryStore from "../store";
 
-interface Props {
-    onSelectGenre: (genre: Genre) => void
-    selectedGenreId?: number;
-}
 
-const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
+const GenreList = () => {
     const { data: genre, isLoading } = useGenre();
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const { toggleColorMode, colorMode } = useColorMode();
+    
+    // Now, it is totally dependent on these setSelectedGenreId and selectedGenreId function
+    const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId)
+    const setSelectedGenreId = useGameQueryStore(s => s.setGenreId)
 
     const list = Array.from({ length: 20 }, (_, i) => i + 1);
 
@@ -38,7 +39,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
 
             <List>
                 {genre?.results.map((genre, index) => (
-                    <ListItem key={genre.id} paddingY={2} onClick={() => onSelectGenre(genre)}>
+                    <ListItem key={genre.id} paddingY={2} onClick={() => setSelectedGenreId(genre.id)}>
                         <GenreListContainer>
                             <HStack
                                 backgroundColor={
@@ -68,7 +69,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
                                     fontWeight={genre.id === selectedGenreId
                                         ? 'bold'
                                         : ''}
-                                        
+
                                 >
                                     {genre.name}
                                 </Text>
