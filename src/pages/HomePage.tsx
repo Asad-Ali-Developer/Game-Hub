@@ -1,20 +1,12 @@
-import { Box, Grid, GridItem, HStack, Show, Switch, Text, useColorMode, VStack } from "@chakra-ui/react";
-import { useState } from "react";
-import { CgClose } from "react-icons/cg";
-import { GiEnrage } from "react-icons/gi";
+import { Box, Grid, GridItem, HStack, Show, Switch, useColorMode } from "@chakra-ui/react";
 import GameGrid from "../Components/GameGrid";
 import GameHeading from "../Components/GameHeading";
 import GenreList from "../Components/GenreList";
 import PlatformSelector from "../Components/PlatformSelector";
 import SortSelector from "../Components/SortSelector";
-import useGameQueryStore from "../store";
-import { darkTheme, genreDarkTheme, genreLightTheme } from "../theme";
 
 const HomePage = () => {
 
-  const { } = useGameQueryStore()
-
-  const [showGenreList, setShowGenreList] = useState(false) // State for showing GenreList
   const { toggleColorMode, colorMode } = useColorMode();
 
 
@@ -47,53 +39,13 @@ const HomePage = () => {
           onChange={toggleColorMode}
         />
 
-        <Show below="lg">
-          <Text
-            width={10}
-            fontSize={'20px'}
-            paddingLeft={2}
-            onClick={() => {
-              setShowGenreList(!showGenreList)
-            }}>
-            {showGenreList
-              ? <CgClose />
-              : <GiEnrage />}
-          </Text>
-
-          <VStack
-            py={1}
-            zIndex={1}
-            align='left'
-            marginTop={1}
-            height={'80%'}
-            borderRight={1}
-            paddingLeft={1}
-            borderRadius={10}
-            backdropBlur='10px'
-            position='absolute'
-            overflowY={'scroll'}
-            borderRightColor={darkTheme}
-            backgroundColor={
-              colorMode === 'light'
-                ? genreLightTheme
-                : genreDarkTheme
-            }>
-
-
-            {showGenreList && (
-              <GenreList />
-            )}
-
-          </VStack>
-        </Show>
 
         <Box
-          marginY={5}
-          paddingLeft={6}>
+          marginY={5}>
           <GameHeading />
 
           <HStack
-            gap={5}
+            gap={3}
             marginTop={8}>
             <PlatformSelector />
             <SortSelector />

@@ -27,7 +27,6 @@ const GameGrid = () => {
             loader={<Spinner />}>
 
             <SimpleGrid
-                padding={5}
                 spacing={10}
                 fontFamily='sans-serif'
                 columns={{ sm: 2, md: 2, lg: 3, xl: 4 }}>

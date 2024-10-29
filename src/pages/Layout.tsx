@@ -7,7 +7,7 @@ const Layout = () => {
     <>
 
       <Navbar />
-      <Box p={5}>
+      <Box p={2}>
         <Outlet />
       </Box>
 

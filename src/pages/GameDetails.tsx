@@ -1,10 +1,10 @@
-import { Box, GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ExpandableText from "../Components/ExpandableText";
 import GameAttributes from "../Components/GameAttributes";
-import useGame from "../hooks/useGame";
-import GameTrailer from "../Components/GameTrailer";
 import GameScreenShots from "../Components/GameScreenShots";
+import GameTrailer from "../Components/GameTrailer";
+import useGame from "../hooks/useGame";
 
 const GameDetails = () => {
 
@@ -15,14 +15,17 @@ const GameDetails = () => {
 
     const { data: game, error, isLoading } = useGame(slug!)
 
-    if (isLoading) return <Spinner />
+    if (isLoading) return <Spinner 
+    position='absolute' 
+    marginTop='50%' 
+    left='50%'/>
 
     // If game is not there it will show an error or if any error occurred in realtime.
     if (error || !game) throw Error
 
     return (
         <>
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} p={5}>
 
                 <GridItem>
 
