@@ -27,7 +27,7 @@ class APIClient<T> {
         return axiosInstance
             .get<FetchResponse<T>>(this.endpont, config)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 return res.data;
             })
     }

@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import ExpandableText from "../Components/ExpandableText";
 import GameAttributes from "../Components/GameAttributes";
 import useGame from "../hooks/useGame";
+import GameTrailer from "../Components/GameTrailer";
 
 const GameDetails = () => {
 
     const { slug } = useParams()
-    console.log(slug);
+    // console.log(slug);
 
     // useGame(slug!) ... This is trick of TypeScript that the slug will never be null
 
@@ -22,11 +23,15 @@ const GameDetails = () => {
         <>
 
             <Heading>{game.name}</Heading>
+
             <ExpandableText>
                 {game.description_raw}
             </ExpandableText>
 
-            <GameAttributes game={game} />       
+            <GameAttributes game={game} />
+
+            <GameTrailer gameId={game.id} />
+
         </>
     )
 }

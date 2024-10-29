@@ -8,7 +8,8 @@ const apiClient = new APIClient<Games>('/games');
 
 const useGames = () => {
 
-    const gameQuery =useGameQueryStore(s => s.gameQuery)
+    // Now, it is totally relying on gameQuery
+    const gameQuery = useGameQueryStore(s => s.gameQuery)
 
     return useInfiniteQuery<FetchResponse<Games>, Error>({
         queryKey: ['games', gameQuery],
