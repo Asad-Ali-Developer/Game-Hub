@@ -31,6 +31,12 @@ class APIClient<T> {
                 return res.data;
             })
     }
+
+    get = (slug: number | string) => {
+        return axiosInstance
+            .get<T>(this.endpont + '/' + slug)
+            .then(res => res.data)
+    }
 }
 
 export default APIClient;
