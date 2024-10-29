@@ -12,7 +12,7 @@ const DefinitionItem = ({ terms, children }: Props) => {
             <Heading
                 as='dt'
                 fontSize='md'
-                color='gray.500'>{terms}</Heading>
+                color='gray.600'>{terms}</Heading>
             <dd>{children}</dd>
         </Box>
     )
