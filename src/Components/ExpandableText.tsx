@@ -28,6 +28,7 @@ const ExpandableText = ({ children }: Props) => {
     // Otherwise, render the whole text with some logics and pre-defined styles
     return (
         <Text
+            mb={5}
             textIndent='30px'
             textAlign='justify'>
             {summary}

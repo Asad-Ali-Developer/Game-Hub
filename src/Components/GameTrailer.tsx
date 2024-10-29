@@ -20,7 +20,7 @@ const GameTrailer = ({ gameId }: Props) => {
   return first
     ? (
       <Box
-        mt={10}
+        mt={5}
         width='100%'
         display='flex'
         overflow='hidden'
