@@ -4,7 +4,6 @@ import useGenre from "../hooks/useGenres";
 import getCroppedImageUrl from "../Services/image-url";
 import GenreListContainer from "./GenreListContainer";
 import GenreListSkeleton from "./GenreListSkeleton";
-import '../App.css'
 import { darkTheme, lightTheme } from "../theme";
 import useGameQueryStore from "../store";
 
