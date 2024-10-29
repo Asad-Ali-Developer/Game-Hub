@@ -1,15 +1,14 @@
-import { useColorMode, Grid, GridItem, Show, Switch, VStack, Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show, Switch, Text, useColorMode, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { GiEnrage } from "react-icons/gi";
 import GameGrid from "../Components/GameGrid";
 import GameHeading from "../Components/GameHeading";
 import GenreList from "../Components/GenreList";
-import Navbar from "../Components/Navbar";
 import PlatformSelector from "../Components/PlatformSelector";
 import SortSelector from "../Components/SortSelector";
 import useGameQueryStore from "../store";
-import { darkTheme, genreLightTheme, genreDarkTheme } from "../theme";
+import { darkTheme, genreDarkTheme, genreLightTheme } from "../theme";
 
 const HomePage = () => {
 
