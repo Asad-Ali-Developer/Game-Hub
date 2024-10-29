@@ -1,4 +1,4 @@
-export interface ScreenShot {
+export default interface ScreenShot {
     id: string;
     image: string;
     is_deleted: boolean;
